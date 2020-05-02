@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:30:21 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 21:10:02 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/02 21:47:03 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@ Calculator::operator=	(const Calculator& rhs)
 
 //===== DESTRUCTORS
 
-Calculator::~Calculator(void) {}
+Calculator::~Calculator(void)
+{
+	for (auto const& val : this->m_token)
+		delete val;
+}
 
 //===== SETTERLS;
 
