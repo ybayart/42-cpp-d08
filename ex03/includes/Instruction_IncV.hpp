@@ -19,6 +19,7 @@ class	Instruction_IncV : public Instruction
 {
 	public:
 		Instruction_IncV(void) {};
+		~Instruction_IncV(void) {};
 		virtual void	execute(Mindopen&);
 		std::string		identify(void);
 };

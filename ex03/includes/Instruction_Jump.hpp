@@ -19,6 +19,7 @@ class	Instruction_Jump : public Instruction
 {
 	public:
 		Instruction_Jump(void) {};
+		~Instruction_Jump(void) {};
 		virtual void	execute(Mindopen&);
 		std::string		identify(void);
 };

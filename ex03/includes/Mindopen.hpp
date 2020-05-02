@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 17:15:03 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 00:49:41 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/02 05:44:13 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Mindopen
 		std::string					m_file;
 		std::vector<Instruction*>	m_inst;
 		int							m_pos;
+		unsigned char*				m_init_ptr;
 		unsigned char*				m_ptr;
 
 		std::ifstream*				m_open(std::string);

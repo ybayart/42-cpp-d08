@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 18:21:41 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 00:53:01 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/02 05:41:35 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	Instruction
 		Instruction(void) {};
 		Instruction(const Instruction&);
 		Instruction& operator=	(const Instruction&);
-		~Instruction(void);
+		virtual ~Instruction(void) {};
 
 		virtual void		execute(Mindopen&) = 0;
 		virtual std::string	identify(void) = 0;

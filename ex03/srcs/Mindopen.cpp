@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 17:19:50 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 01:26:17 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/02 05:44:59 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ Mindopen::Mindopen(std::string file)
 {
 	this->m_file = file;
 	this->m_pos = 0;
-	this->m_ptr = new unsigned char[30000];
+	this->m_init_ptr = new unsigned char[30000];
+	this->m_ptr = this->m_init_ptr;
 }
 
 Mindopen::Mindopen(const Mindopen& src)
@@ -43,11 +44,18 @@ Mindopen::operator=	(const Mindopen& rhs)
 		this->m_inst = rhs.m_inst;
 		this->m_pos = rhs.m_pos;
 		this->m_ptr = rhs.m_ptr;
+		this->m_init_ptr = rhs.m_init_ptr;
 	}
 	return (*this);
 }
 
-Mindopen::~Mindopen(void) {}
+Mindopen::~Mindopen(void)
+{
+	for (auto const &val : this->m_inst)
+		delete val;
+	this->m_inst.clear();
+	delete[] this->m_init_ptr;
+}
 
 std::ifstream*
 Mindopen::m_open(std::string file)

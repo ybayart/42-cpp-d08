@@ -19,6 +19,7 @@ class	Instruction_Put : public Instruction
 {
 	public:
 		Instruction_Put(void) {};
+		~Instruction_Put(void) {};
 		virtual void	execute(Mindopen&);
 		std::string		identify(void);
 };
