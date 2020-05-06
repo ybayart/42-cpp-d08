@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 17:19:50 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 05:44:59 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:22:45 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Mindopen::Mindopen(std::string file)
 	this->m_file = file;
 	this->m_pos = 0;
 	this->m_init_ptr = new unsigned char[30000];
+	bzero(this->m_init_ptr, 30000);
 	this->m_ptr = this->m_init_ptr;
 }
 
@@ -51,8 +52,8 @@ Mindopen::operator=	(const Mindopen& rhs)
 
 Mindopen::~Mindopen(void)
 {
-	for (auto const &val : this->m_inst)
-		delete val;
+	for (std::vector<Instruction*>::iterator it = this->m_inst.begin();it != this->m_inst.end();it++)
+		delete *it;
 	this->m_inst.clear();
 	delete[] this->m_init_ptr;
 }
@@ -62,7 +63,7 @@ Mindopen::m_open(std::string file)
 {
 	std::ifstream*	input = new std::ifstream;
 
-	(*input).open(file);
+	(*input).open(file.c_str());
 	if (!(*input))
 	{
 		delete input;
@@ -135,16 +136,16 @@ Mindopen::getList(void) const
 	return (this->m_inst);
 }
 
-int*
+int&
 Mindopen::getPos(void)
 {
-	return (&(this->m_pos));
+	return (this->m_pos);
 }
 
-unsigned char**
+unsigned char*&
 Mindopen::getPtr(void)
 {
-	return (&(this->m_ptr));
+	return (this->m_ptr);
 }
 
 void

@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:16:25 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 17:07:35 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:45:47 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <queue>
 # include <list>
 # include <exception>
+# include <cstdlib>
 
 # include "Token.hpp"
 

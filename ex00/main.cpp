@@ -6,12 +6,13 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 03:35:30 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 04:47:27 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 03:56:27 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
+#include <cstdlib>
 
 int
 main(void)

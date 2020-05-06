@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 17:15:03 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 05:44:13 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:22:19 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <iostream>
 # include <vector>
 # include <exception>
+# include <string.h>
+# include <cerrno>
 # include <string.h>
 
 # include "Instruction.hpp"
@@ -46,8 +48,8 @@ class	Mindopen
 		const std::string				getFile(void) const;
 		size_t							size(void) const;
 		const std::vector<Instruction*>	getList(void) const;
-		int*							getPos(void);
-		unsigned char**					getPtr(void);
+		int&							getPos(void);
+		unsigned char*&					getPtr(void);
 	
 		void	setFile(std::string);
 		void	parse(void);

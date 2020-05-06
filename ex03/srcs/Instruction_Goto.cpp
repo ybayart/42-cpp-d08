@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 20:37:32 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 01:24:20 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:16:00 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ Instruction_Goto::execute(Mindopen& min)
 {
 	try
 	{
-		if ((**min.getPtr()) != 0)
+		if (*min.getPtr() != 0)
 		{
-			while (min.getList().at(*min.getPos())->identify() != "Jump" && (size_t)*min.getPos() > 0)
-				(*min.getPos())--;
+			while (min.getList().at(min.getPos())->identify() != "Jump" && (size_t)min.getPos() > 0)
+				min.getPos()--;
 		}
 	}
 	catch (std::exception& e) {}

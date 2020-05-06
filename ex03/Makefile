@@ -18,7 +18,7 @@ NAME		= Mindopen
 CC			= clang++
 RM			= rm -f
 
-CFLAGS		= -Wall -Wextra -Werror -I./includes
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 -I./includes
 
 .cpp.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.cpp=.o}

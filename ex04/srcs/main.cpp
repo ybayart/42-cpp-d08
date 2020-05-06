@@ -6,16 +6,30 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:09:02 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 20:58:00 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:40:13 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Calculator.hpp"
 
+void
+print_list(std::list<Token*> list)
+{
+	std::list<Token*>::iterator	it;
+	std::list<Token*>::iterator	itend;
+
+	it = list.begin();
+	itend = list.end();
+	for (;it != itend;it++)
+		std::cout << **it << " ";
+	std::cout << std::endl;
+}
+
 int
 main(int argc, char** argv)
 {
-	Calculator	calc;
+	Calculator					calc;
+	std::list<Token*>			list;
 
 	if (argc != 2)
 	{
@@ -27,15 +41,11 @@ main(int argc, char** argv)
 	{
 		calc.execExpr();
 		std::cout << "Tokens: ";
-		for (auto const &val : calc.getToken())
-			std::cout << *val << " ";
-		std::cout << std::endl;
+		print_list(calc.getToken());
 
 		calc.execToken();
 		std::cout << "Postfix: ";
-		for (auto const &val : calc.getPostfix())
-			std::cout << *val << " ";
-		std::cout << std::endl;
+		print_list(calc.getPostfix());
 
 		calc.execPostfix();
 		std::cout << "Result: " << calc.getResult() << std::endl;

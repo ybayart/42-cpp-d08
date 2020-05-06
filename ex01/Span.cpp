@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 04:57:50 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 05:47:58 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 03:58:20 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ Span::longestSpan(void)
 	if (this->m_list.size() < 2)
 		throw std::runtime_error("Not enough values");
 	std::set<int> list = this->m_list;
-	for (auto const &val : list)
-		value = val;
+	for (std::set<int>::iterator it = list.begin();it != list.end();it++)
+		value = *it;
 	return (value - *(list.begin()));
 }
 

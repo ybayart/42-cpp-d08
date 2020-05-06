@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:30:21 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/02 21:47:03 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/06 04:44:54 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ Calculator::operator=	(const Calculator& rhs)
 
 Calculator::~Calculator(void)
 {
-	for (auto const& val : this->m_token)
-		delete val;
+	for (std::list<Token*>::iterator it = this->m_token.begin();it != this->m_token.end();it++)
+		delete *it;
 }
 
 //===== SETTERLS;
@@ -220,14 +220,14 @@ Calculator::m_toPostfix(std::list<Token*> queue)
 
 	try
 	{
-		for (auto const& val : queue)
+		for (std::list<Token*>::iterator it = queue.begin();it != queue.end();it++)
 		{
-			id = (*val).identify();
+			id = (**it).identify();
 			if (id == "Nb")
-				postfix.push_back(val);
+				postfix.push_back(*it);
 			else if (id == "Op")
 			{
-				value = (*val).getValue();
+				value = (**it).getValue();
 				if (value == '*' || value == '/')
 					while (!stack.empty() && (*stack.top()).identify() == "Op")
 					{
@@ -240,12 +240,12 @@ Calculator::m_toPostfix(std::list<Token*> queue)
 						postfix.push_back(stack.top());
 						stack.pop();
 					}
-				stack.push(val);
+				stack.push(*it);
 			}
 			else if (id == "Par")
 			{
-				if ((*val).getValue() == '(')
-					stack.push(val);
+				if ((**it).getValue() == '(')
+					stack.push(*it);
 				else
 				{
 					if (!stack.empty())
@@ -288,13 +288,13 @@ Calculator::m_toResult(std::list<Token*> queue)
 	int				value;
 
 	value = 0;
-	for (auto const& val : queue)
+	for (std::list<Token*>::iterator it = queue.begin();it != queue.end();it++)
 	{
-		id = (*val).identify();
-		std::cout << "| " << (*val) << " | ";
+		id = (**it).identify();
+		std::cout << "| " << (**it) << " | ";
 		if (id == "Nb")
 		{
-			stack.push((*val).getValue());
+			stack.push((**it).getValue());
 			std::cout << "PUSH ";
 		}
 		else if (id == "Op")
@@ -303,7 +303,7 @@ Calculator::m_toResult(std::list<Token*> queue)
 				throw std::logic_error("Bad syntax");
 			value = stack.top();
 			stack.pop();
-			switch ((*val).getValue())
+			switch ((**it).getValue())
 			{
 				case '*':
 					value = stack.top() * value;
