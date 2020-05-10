@@ -15,22 +15,23 @@
 
 # include <iostream>
 # include <list>
+# include <algorithm>
 
 template <typename T>
-int&
+bool
 easyfind(T container, int tofind)
 {
 	try
 	{
-		for (typename T::iterator it = container.begin();it != container.end(); it++)
-			if (*it == tofind)
-				return (*it);
+		if (std::binary_search(container.begin(), container.end(), tofind))
+			return (true);
+		else
+			return (false);
 	}
 	catch (std::exception& e)
 	{
 		throw;
 	}
-	throw std::exception();
 }
 
 #endif
