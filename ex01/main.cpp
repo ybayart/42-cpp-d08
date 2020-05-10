@@ -6,11 +6,18 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 05:06:38 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 06:00:40 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 16:31:11 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+int
+make_rand(int val)
+{
+	(void)val;
+	return (rand() % 4294967296 - 2147483647);
+}
 
 void
 check1(Span& sp)
@@ -33,11 +40,13 @@ check2(Span& sp)
 {
 	try
 	{
+		sp.addNumber(2147483647);
 		sp.addNumber(5);
-		sp.addNumber(3);
+		sp.addNumber(0);
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
+		sp.addNumber(2147483646);
 
 		std::cout << sp.shortestSpan() << " | " << sp.longestSpan() << std::endl;
 	}
@@ -81,6 +90,21 @@ check4(Span& sp)
 	}
 }
 
+void
+check5(Span& sp)
+{
+	try
+	{
+		sp.fillNumber(make_rand);
+
+		std::cout << sp.shortestSpan() << " | " << sp.longestSpan() << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}
+
 int
 main(void)
 {
@@ -97,7 +121,7 @@ main(void)
 	check1(sp3);
 
 	std::cout << "4: ";
-	Span sp4(5);
+	Span sp4(7);
 	check2(sp4);
 
 	std::cout << "5: ";
@@ -107,4 +131,8 @@ main(void)
 	std::cout << "6: ";
 	Span sp6(5);
 	check4(sp6);
+
+	std::cout << "7: ";
+	Span sp7(42);
+	check5(sp7);
 }

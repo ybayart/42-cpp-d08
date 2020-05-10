@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 23:35:55 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/01 00:30:51 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 17:06:57 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stack>
 # include <list>
+# include <cstdlib>
 
 template <typename T>
 class	MutantStack : public std::stack<T>
@@ -28,8 +29,9 @@ class	MutantStack : public std::stack<T>
 		MutantStack<T>& operator=	(MutantStack const&);
 		~MutantStack(void);
 
+		bool empty(void) const;
 		T top(void);
-		T size(void);
+		size_t size(void) const;
 
 		typedef std::list<int>::iterator iterator;
 
@@ -44,6 +46,8 @@ class	MutantStack : public std::stack<T>
 
 		void push(T value);
 		void pop(void);
+
+
 };
 
 template <typename T>
@@ -66,6 +70,13 @@ MutantStack<T>::operator=	(MutantStack const& rhs)
 }
 
 template <typename T>
+bool
+MutantStack<T>::empty(void) const
+{
+	return (this->m_stack.empty());
+}
+
+template <typename T>
 T
 MutantStack<T>::top(void)
 {
@@ -73,8 +84,8 @@ MutantStack<T>::top(void)
 }
 
 template <typename T>
-T
-MutantStack<T>::size(void)
+size_t
+MutantStack<T>::size(void) const
 {
 	return (m_stack.size());
 }

@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 23:52:23 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/01 00:30:13 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 17:11:13 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ main(void)
 {
 	MutantStack<int>	mstack;
 
+	std::cout << "size: " << mstack.size() << " empty? " << mstack.empty() << std::endl;
 	mstack.pop();
 	
 	mstack.push(5);
+	std::cout << "size: " << mstack.size() << " empty? " << mstack.empty() << std::endl;
 	mstack.push(17);
+	std::cout << "size: " << mstack.size() << " empty? " << mstack.empty() << std::endl;
 
 	std::cout << "top: " << mstack.top() << " | size: " << mstack.size() << std::endl;
 
@@ -48,5 +51,21 @@ main(void)
 		++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << "size: " << mstack.size() <<
+				" empty? " << mstack.empty()  <<
+				" top " << mstack.top()<< std::endl;
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	mstack.pop();
+	std::cout << "size: " << mstack.size() <<
+				" empty? " << mstack.empty()  <<
+				" top " << mstack.top()<< std::endl;
+
 	return (0);
 }

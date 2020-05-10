@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 16:30:21 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/06 04:44:54 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 17:27:59 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,11 +250,13 @@ Calculator::m_toPostfix(std::list<Token*> queue)
 				{
 					if (!stack.empty())
 					{
-						while ((*stack.top()).identify() != "Par")
+						while (!stack.empty() && (*stack.top()).identify() != "Par")
 						{
 							postfix.push_back(stack.top());
 							stack.pop();
 						}
+						if (stack.empty())
+							throw std::domain_error("Bad parenthesis");
 						if (!stack.empty() && (*stack.top()).identify() == "Par")
 							stack.pop();
 					}

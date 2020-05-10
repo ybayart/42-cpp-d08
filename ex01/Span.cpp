@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 04:57:50 by hexa              #+#    #+#             */
-/*   Updated: 2020/05/06 03:58:20 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 16:30:33 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ Span::addNumber(int nb)
 		throw std::overflow_error("Reach the maximum");
 }
 
+void
+Span::fillNumber(int func(int))
+{
+	this->m_list.clear();
+	for (unsigned int i = 0;i < this->m_size;i++)
+		this->m_list.insert(func(i));
+}
+
 int
 Span::shortestSpan(void)
 {
@@ -71,16 +79,8 @@ Span::shortestSpan(void)
 int
 Span::longestSpan(void)
 {
-	int		value;
-
 	if (this->m_list.size() < 2)
 		throw std::runtime_error("Not enough values");
-	std::set<int> list = this->m_list;
-	for (std::set<int>::iterator it = list.begin();it != list.end();it++)
-		value = *it;
-	return (value - *(list.begin()));
+	return (*(std::max_element(this->m_list.begin(), this->m_list.end())) -
+			*(std::min_element(this->m_list.begin(), this->m_list.end())));
 }
-
-
-//	for (auto const &foo : test)
-//		std::cout << foo << std::endl;

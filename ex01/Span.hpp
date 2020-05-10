@@ -6,7 +6,7 @@
 /*   By: hexa <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 04:50:35 by hexa              #+#    #+#             */
-/*   Updated: 2020/04/30 05:12:45 by hexa             ###   ########.fr       */
+/*   Updated: 2020/05/10 16:24:47 by hexa             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <exception>
 # include <set>
+# include <algorithm>
 
 class	Span
 {
@@ -32,6 +33,7 @@ class	Span
 		~Span(void);
 
 		void	addNumber(const int);
+		void	fillNumber(int(int));
 
 		int		shortestSpan(void);
 		int		longestSpan(void);
